@@ -1,0 +1,141 @@
+SELECT *
+FROM orders
+JOIN customers
+
+
+
+SELECT *
+FROM orders
+JOIN customers ON orders.customer_id = customers.customer_id
+
+
+
+
+SELECT 
+    order_id,
+    first_name,
+    last_name
+FROM orders
+JOIN customers ON orders.customer_id = customers.customer_id
+
+
+
+SELECT 
+    orders.customer_id,
+    order_id,
+    first_name,
+    last_name
+FROM orders
+JOIN customers ON orders.customer_id = customers.customer_id
+
+
+
+
+SELECT *
+FROM order_items
+JOIN products
+
+
+SELECT *
+FROM order_items oi
+JOIN products p ON oi.product_id = p.product_id
+
+
+SELECT quantity, p.unit_price, order_id, oi.product_id, p.name
+FROM order_items oi
+JOIN products p ON oi.product_id = p.product_id
+
+
+SELECT order_id, 
+       oi.product_id,
+       quantity,
+       oi.unit_price
+FROM order_items oi
+JOIN products p ON oi.product_id = p.product_id
+
+
+SELECT *
+FROM order_items oi
+JOIN sql_inventory.products p 
+	ON oi.product_id = p.product_id
+
+
+
+SELECT *
+FROM employees e
+JOIN employees o
+
+
+
+SELECT *
+FROM employees e
+JOIN employees o
+	ON e.reports_to = o.reports_to
+
+
+SELECT *
+FROM employees e
+JOIN employees o
+	ON e.reports_to = o.employee_id
+
+
+SELECT 
+    e.employee_id,
+    e.first_name,
+    o.first_name AS Manager
+FROM employees e
+JOIN employees o
+	ON e.reports_to = o.employee_id
+
+
+
+SELECT *
+FROM orders o
+JOIN customers c 
+		ON o.customer_id = c.customer_id 
+JOIN order_statuses os
+	ON o.status = os.order_status_id
+
+
+
+
+SELECT 
+    o.order_id,
+    o.order_date,
+    c.first_name,
+    c.last_name,
+    os.name AS status
+FROM orders o
+JOIN customers c 
+		ON o.customer_id = c.customer_id 
+JOIN order_statuses os
+	ON o.status = os.order_status_id
+
+
+
+SELECT *
+FROM payments p
+JOIN clients c
+
+
+SELECT *
+FROM payments p
+JOIN clients c 
+	ON p.client_id = c.client_id
+
+
+
+SELECT 
+   p.date,
+    p.invoice_id,
+    p.amount,
+    c.name,
+    pm.name AS Method
+FROM payments p
+JOIN clients c 
+	ON p.client_id = c.client_id
+JOIN payment_methods pm
+	ON p.payment_method = pm.payment_method_id	
+
+
+
